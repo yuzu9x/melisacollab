@@ -1,14 +1,13 @@
-const socket = io();
+const socket = io("https://yuzu9x.github.io/melisacollab/");
 
-// Configuration
 const COOKIE_COUNT = 6;
-let currentCookie = 0; // Which cookie is currently selected
+let currentCookie = 0; // to choose cookie
 let drawing = false;
 let lastX, lastY;
-let currentColor = '#8B4513'; // Default brown icing
+let currentColor = '#8B4513'; // default icing color
 let lineWidth = 3;
 
-// Create canvases for each cookie
+// Canvases for each of the cookies
 const cookieCanvases = [];
 const cookieContexts = [];
 
@@ -38,11 +37,10 @@ function initializeCookies() {
     cookieCanvases[i] = canvas;
     cookieContexts[i] = ctx;
     
-    // Add event listeners for each canvas
     setupCanvasListeners(canvas, ctx, i);
   }
   
-  // Highlight first cookie
+  // Selecting the cookie
   highlightCookie(0);
 }
 
@@ -103,7 +101,7 @@ socket.on('draw', ({ cookieId, x1, y1, x2, y2, color, width }) => {
   drawLine(cookieId, x1, y1, x2, y2, color, width, false);
 });
 
-// Load existing drawings when joining
+// Loading existing drawings when joining
 socket.on('load-drawings', (drawings) => {
   drawings.forEach(({ cookieId, x1, y1, x2, y2, color, width }) => {
     drawLine(cookieId, x1, y1, x2, y2, color, width, false);
@@ -146,5 +144,4 @@ socket.on('clear-all', () => {
   });
 });
 
-// Initialize on load
 initializeCookies();

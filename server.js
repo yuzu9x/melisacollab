@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-// Store drawing history for each cookie
+// Storing drawing history for each cookie
 const drawingHistory = [];
 
 io.on('connection', (socket) => {
@@ -13,10 +13,7 @@ io.on('connection', (socket) => {
   socket.emit('load-drawings', drawingHistory);
 
   socket.on('draw', (data) => {
-    // Store the drawing
     drawingHistory.push(data);
-    
-    // Broadcast to all other clients
     socket.broadcast.emit('draw', data);
   });
 
