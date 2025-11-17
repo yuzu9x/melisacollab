@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Decorator</title>
+  <style>
+    body {
+        font-family: Apple Chancery, cursive;
+        background: url('/images/cats.jpg');
+        background-size: repeat;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 20px;
+    }
+
+   
+    h1 {
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    #cookie-tray {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 700px;
+      margin: 100px auto;
+    }
+    
+    .cookie-container {
+      background: #ebd0ae;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    
+    .cookie-container.active {
+      transform: scale(1.05);
+      
+    }
+    
+    .cookie-canvas {
+      border-radius: 50%;
+      background: #f4e4c1;
+      cursor: crosshair;
+      display: block;
+    }
+    
+    .controls {
+      text-align: center;
+      margin: 20px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-family: 'Apple Chancery', cursive;
+      font-size: 100%;
+      margin: 5px;
+      border: none;
+      background: #bce4e0;
+      color: black;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background: #6d3710;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #000000;">꧁•⊹٭𝚖𝚎𝚕𝚒𝚜𝚊'𝚜 𝚌𝚘𝚘𝚔𝚒𝚎 𝚍𝚎𝚌𝚘𝚛𝚊𝚝𝚘𝚛٭⊹•꧂</h1>
+  
+  <div class="controls">
+    <label>Color: <input type="color" id="color-picker" value="#8B4513"></label>
+    <label>Size: <input type="range" id="brush-size" min="1" max="10" value="3"></label>
+    <button id="clear-cookie">Clear This Cookie</button>
+    <button id="clear-all">Clear All Cookies</button>
+  </div>
+  
+  <div id="cookie-tray"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
