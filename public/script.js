@@ -1,4 +1,4 @@
-const socket = io("https://yuzu9x.github.io/melisacollab/");
+const socket = io("https://melisacollab.onrender.com");
 
 const COOKIE_COUNT = 6;
 let currentCookie = 0; // to choose cookie
